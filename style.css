@@ -1,0 +1,32 @@
+.hidden {
+  display: none;
+}
+
+#measurement, #ingredient{
+  list-style-type: none;
+}
+
+.titleHero{
+  display: flex;
+  justify-content: space-between;
+}
+
+#artistry{
+  border: coral 2px ridge;
+}
+
+#titleArtistry{
+  position: relative ;
+  top: 10px;
+  color: coral;
+  font-size: 35px;
+  font-weight: bolder;
+}
+#subHead{
+  position: relative;
+  top: -45px;
+}
+.hero-body{
+  padding-bottom: 0px;
+  padding-top: 30px;
+}
