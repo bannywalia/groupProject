@@ -2,10 +2,6 @@
   display: none;
 }
 
-#measurement, #ingredient{
-  list-style-type: none;
-}
-
 .titleHero{
   display: flex;
   justify-content: space-between;
