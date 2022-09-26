@@ -1,18 +1,15 @@
 let search;
 let artistArray = [];
 const searchContainerEl = $('#search-results-container');
-const searchResults = $('#search-results');
 const artistEl = $("#artist");
 const searchFormEl = $('#search-form');
 const searchFieldEl = $("#search-field")
 
 
-let formSubmitHandler = function (event) {
-  console.log("Okay")
+var formSubmitHandler = function (event) {
   event.preventDefault();
-  
 
-  let artist = searchFieldEl.val().trim();
+  var artist = artistInputEl.value.trim();
 
   if (artist) {
     getArtistName(artist);
@@ -24,22 +21,14 @@ let formSubmitHandler = function (event) {
   }
 };
 
-let getArtistName = function (art) {
-  let apiUrl = 'https://youtube-music1.p.rapidapi.com/v2/search?query=' + art;
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '0cc9ca8730msh65c66718893a8f3p1fbbe6jsne7b5e98ffee6',
-      'X-RapidAPI-Host': 'youtube-music1.p.rapidapi.com'
-    }
-  };
-  
-  fetch(apiUrl, options)
+var getArtist = function (searchTerm) {
+  var apiUrl = 'https://youtube-music1.p.rapidapi.com/v2/search?query=' + searchTerm;
+
+  fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data);
-          displayArtists(data.result.songs, art);
+          displayRepos(data, searchTerm);
         });
       } else {
         alert('Error: ' + response.statusText);
@@ -49,42 +38,3 @@ let getArtistName = function (art) {
       alert('Unable to find Artist');
     });
 };
-
-let displayArtists = function (songs, searchTerm) {
-  if (songs.length === 0) {
-    searchContainerEl.textContent = 'No songs found.';
-    return;
-  }
-
-  //searchResults.textContent = searchTerm;
-  
-// need to fix after this
-  for (let i = 0; i < songs.length; i++) {
-    console.log("final")
-    let artistName = songs[i].name;
-
-    let artistNameEl = document.createElement('div');
-    artistNameEl.classList = 'list-item flex-row justify-space-between align-center';
-
-    let titleEl = document.createElement('span');
-    titleEl.textContent = artistName;
-
-    artistNameEl.append(titleEl);
-
-    let statusEl = document.createElement('span');
-    statusEl.classList = 'flex-row align-center';
-
-    if (songs[i].open_issues_count > 0) {
-      statusEl.innerHTML =
-        "<i class='fas fa-times status-icon icon-danger'></i>" + songs[i].open_issues_count + ' issue(s)';
-    } else {
-      statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
-    }
-
-    artistNameEl.append(statusEl);
-
-    searchContainerEl.append(artistNameEl);
-  }
-};
-
-searchFormEl.on('submit', formSubmitHandler);
