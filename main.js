@@ -56,14 +56,15 @@ let displayArtists = function (songs, searchTerm) {
     return;
   }
 
-  searchResults.textContent = searchTerm;
+  //searchResults.textContent = searchTerm;
   
 // need to fix after this
   for (let i = 0; i < songs.length; i++) {
+    console.log("final")
     let artistName = songs[i].name;
 
-    let artistNameEl = $('<div>');
-    artistNameEl.class('list-item flex-row justify-space-between align-center');
+    let artistNameEl = document.createElement('div');
+    artistNameEl.classList = 'list-item flex-row justify-space-between align-center';
 
     let titleEl = document.createElement('span');
     titleEl.textContent = artistName;
