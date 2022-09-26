@@ -1,15 +1,15 @@
 let search;
 let artistArray = [];
-const searchContainerEl = $('#search-results');
-const searchResults = $('#search-results');
-const artistEl = $("#artist");
-const searchFormEl = $('#search-form');
-const searchFieldEl = $("#search-field")
+const searchContainerEl = document.querySelector('#search-results');
+const searchResults = document.querySelector('#search-results');
+const artistEl = document.querySelector("#artist");
+const searchFormEl = document.querySelector('#search-form');
+const searchFieldEl = document.querySelector("#search-field");
 
 let formSubmitHandler = function (event) {
   event.preventDefault();
 
-  let artist = searchFieldEl.val().trim();
+  let artist = searchFieldEl.value.trim();
 
   if (artist) {
     getArtistName(artist);
@@ -83,4 +83,4 @@ let displayArtists = function (songs, searchTerm) {
   }
 };
 
-searchFormEl.on('submit', formSubmitHandler);
+searchFormEl.addEventListener('submit', formSubmitHandler);
