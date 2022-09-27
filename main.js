@@ -1,10 +1,9 @@
 let search;
 let artistArray = [];
-const searchContainerEl = document.querySelector('#search-results');
-const searchResults = document.querySelector('#search-results');
-const artistEl = document.querySelector("#artist");
+const searchResultsEl = document.querySelector('#search-results');
 const searchFormEl = document.querySelector('#search-form');
 const searchFieldEl = document.querySelector("#search-field");
+const artistImgEl = document.querySelector("#artist_img");
 
 let formSubmitHandler = function (event) {
   event.preventDefault();
@@ -14,7 +13,7 @@ let formSubmitHandler = function (event) {
   if (artist) {
     getArtistName(artist);
 
-    searchContainerEl.textContent = '';
+    searchResultsEl.textContent = '';
     searchFieldEl.value = '';
   } else {
     alert('Please enter an Artist');
@@ -36,7 +35,7 @@ let getArtistName = function (art) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data.result.songs)
-          displayArtists(data.result.songs, art);
+          displayArtists(data.result.songs, art)
         });
       } else {
         alert('Error: ' + response.statusText);
@@ -49,26 +48,35 @@ let getArtistName = function (art) {
 
 let displayArtists = function (songs, searchTerm) {
   if (songs.length === 0) {
-    searchContainerEl.textContent = 'No songs found.';
+    searchResultsEl.textContent = 'No songs found.';
     return;
   }
 
-  searchResults.textContent = searchTerm;
+  searchResultsEl.textContent = searchTerm;
 
   // need to fix after this
-  for (let i = 0; i < songs.length; i++) {
+  for (let i = 0; i < 5; i++) {
     let artistName = songs[i].name;
+    const thumbnailUrl = songs[i].thumbnail;
 
-    let artistNameEl = document.createElement('p')
+    let artistNameEl = document.createElement('div')
     artistNameEl.classList = 'list-item flex-row justify-space-between align-center';
+
+    const imgEl = document.createElement('img')
+    imgEl.src = thumbnailUrl;
+    artistNameEl.append(imgEl);
 
     let titleEl = document.createElement('span');
     titleEl.innerHTML = artistName;
+    titleEl.classList="artistName";
+  
 
     artistNameEl.append(titleEl);
 
     let statusEl = document.createElement('span');
     statusEl.classList = 'flex-row align-center';
+
+
 
     if (songs[i].open_issues_count > 0) {
       statusEl.innerHTML =
@@ -79,7 +87,7 @@ let displayArtists = function (songs, searchTerm) {
 
     //artistNameEl.append(statusEl);
 
-    searchContainerEl.append(artistNameEl);
+    searchResultsEl.append(artistNameEl);
   }
 };
 
