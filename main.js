@@ -114,6 +114,7 @@ function getConcert (keyword){
 };
 
 let displayConcerts = function (events, searchTerm) {
+  
   if (events.length === 0) {
     concertResultsEl.textContent = 'No events found.';
     return;
