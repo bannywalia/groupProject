@@ -5,6 +5,12 @@ const searchFormEl = document.querySelector('#search-form');
 const searchFieldEl = document.querySelector("#search-field");
 const artistImgEl = document.querySelector("#artist_img");
 const concertResultsEl = document.querySelector("#concert-results")
+//modal// Get the modal
+var modal = document.getElementById("myModal");
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
 let formSubmitHandler = function (event) {
   event.preventDefault();
@@ -17,10 +23,11 @@ console.log("testing1");
     searchResultsEl.textContent = '';
     searchFieldEl.value = '';
   } else {
+    //change to modal alert
     alert('Please enter an Artist');
+   
   }
 };
-
 let getArtistName = function (art) {
   console.log("testing2");
   getConcert(art);

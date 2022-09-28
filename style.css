@@ -14,14 +14,14 @@
 
 #titleArtistry{
   position: relative ;
-  top: 10px;
+  top: -10px;
   color: coral;
   font-size: 35px;
   font-weight: bolder;
 }
 #subHead{
   position: relative;
-  top: -45px;
+  top: -15px;
 }
 .hero-body{
   padding-bottom: 0px;
