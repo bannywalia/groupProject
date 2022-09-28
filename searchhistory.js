@@ -4,9 +4,9 @@ let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 const clearEl = document.getElementById("clear-history");
 const historyEl = document.getElementById("history");
 
-searchEl.addEventListener("click", function (){
+searchEl.addEventListener("click", function () {
+  console.log("testing4");
   const searchTerm = searchArtistEl.value;
-  getArtistName(searchTerm);
   searchHistory.push(searchTerm);
   localStorage.setItem("search", JSON.stringify(searchHistory));
   renderSearchHistory();
@@ -21,17 +21,17 @@ clearEl.addEventListener("click", function () {
 function renderSearchHistory() {
   historyEl.innerHTML = "";
   for (let i = 0; i < searchHistory.length; i++) {
-      const historyItem = document.createElement("input");
-      historyItem.setAttribute("type", "text");
-      historyItem.setAttribute("readonly", true);
-      historyItem.setAttribute("class", "form-control d-block bg-white");
-      historyItem.setAttribute("value", searchHistory[i]);
-      historyItem.addEventListener("click", function () {
-          getArtistName(historyItem.value);
-      })
-      historyEl.append(historyItem);
+    const historyItem = document.createElement("input");
+    historyItem.setAttribute("type", "text");
+    historyItem.setAttribute("readonly", true);
+    historyItem.setAttribute("class", "form-control d-block bg-white");
+    historyItem.setAttribute("value", searchHistory[i]);
+    historyItem.addEventListener("click", function () {
+      getArtistName(historyItem.value);
+    })
+    historyEl.append(historyItem);
   }
 }
 
-  
+
 

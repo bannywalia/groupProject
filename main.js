@@ -4,10 +4,11 @@ const searchResultsEl = document.querySelector('#search-results');
 const searchFormEl = document.querySelector('#search-form');
 const searchFieldEl = document.querySelector("#search-field");
 const artistImgEl = document.querySelector("#artist_img");
+const concertResultsEl = document.querySelector("#concert-results")
 
 let formSubmitHandler = function (event) {
   event.preventDefault();
-
+console.log("testing1");
   let artist = searchFieldEl.value.trim();
 
   if (artist) {
@@ -21,6 +22,7 @@ let formSubmitHandler = function (event) {
 };
 
 let getArtistName = function (art) {
+  console.log("testing2");
   getConcert(art);
   let apiUrl = 'https://youtube-music1.p.rapidapi.com/v2/search?query=' + art;
   const options = {
@@ -92,11 +94,46 @@ let displayArtists = function (songs, searchTerm) {
   }
 };
 
+// TicketMaster API to get concerts based on search
 function getConcert (keyword){
+  console.log("testing3");
   fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=4&keyword=${keyword}&apikey=RF61BoAcPs2tAvFyC65f6PQ2k157lUEm`)
-    .then(response => response.json())
-    .then(response => console.log("Test",response._embedded.events))
-    .catch(err => console.error(err));
+  .then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
+        console.log(data._embedded.events)
+        displayConcerts(data._embedded.events, keyword)
+      });
+    } else {
+      alert('Error: ' + response.statusText);
+    }
+  })
+  .catch(function (error) {
+    alert('Unable to find Artist');
+  });
+};
+
+let displayConcerts = function (events, searchTerm) {
+  if (events.length === 0) {
+    concertResultsEl.textContent = 'No events found.';
+    return;
   }
+
+  for (let i = 0; i < events.length; i++) {
+    let concertName = events[i].name;
+
+    let concertNameEl = document.createElement('div')
+    concertNameEl.classList = 'list-item flex-row justify-space-between align-center';
+
+    let concertTitleEl = document.createElement('span');
+    concertTitleEl.innerHTML = concertName;
+
+    concertNameEl.append(concertTitleEl);
+
+    concertResultsEl.append(concertName);
+  }
+}
+  
+    
 
 searchFormEl.addEventListener('submit', formSubmitHandler);
