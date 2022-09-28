@@ -21,6 +21,7 @@ let formSubmitHandler = function (event) {
 };
 
 let getArtistName = function (art) {
+  getConcert(art);
   let apiUrl = 'https://youtube-music1.p.rapidapi.com/v2/search?query=' + art;
   const options = {
     method: 'GET',
@@ -90,5 +91,12 @@ let displayArtists = function (songs, searchTerm) {
     searchResultsEl.append(artistNameEl);
   }
 };
+
+function getConcert (keyword){
+  fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=4&keyword=${keyword}&apikey=RF61BoAcPs2tAvFyC65f6PQ2k157lUEm`)
+    .then(response => response.json())
+    .then(response => console.log("Test",response._embedded.events))
+    .catch(err => console.error(err));
+  }
 
 searchFormEl.addEventListener('submit', formSubmitHandler);
