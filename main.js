@@ -5,12 +5,6 @@ const searchFormEl = document.querySelector('#search-form');
 const searchFieldEl = document.querySelector("#search-field");
 const artistImgEl = document.querySelector("#artist_img");
 const concertResultsEl = document.querySelector("#concert-results")
-//modal// Get the modal
-var modal = document.getElementById("myModal");
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
 
 let formSubmitHandler = function (event) {
   event.preventDefault();
@@ -23,11 +17,10 @@ console.log("testing1");
     searchResultsEl.textContent = '';
     searchFieldEl.value = '';
   } else {
-    //change to modal alert
     alert('Please enter an Artist');
-   
   }
 };
+
 let getArtistName = function (art) {
   console.log("testing2");
   getConcert(art);
@@ -130,15 +123,25 @@ let displayConcerts = function (events, searchTerm) {
   for (let i = 0; i < events.length; i++) {
     let concertName = events[i].name;
 
-    let concertNameEl = document.createElement('div')
-    concertNameEl.classList = 'list-item flex-row justify-space-between align-center';
+    let concertUl = document.createElement("ul")
+    concertResultsEl.appendChild(concertUl)
 
+
+    let concertNameEl = document.createElement('li')
+    concertNameEl.classList = 'list-item flex-row justify-space-between align-center';
+// added links to concert results
     let concertTitleEl = document.createElement('span');
     concertTitleEl.innerHTML = concertName;
 
+    let concertLinkEl = document.createElement ('a');
+    concertLinkEl.innerHTML =" Find Tickets Here";
+    concertLinkEl.href = events[i].url
+
+  
     concertNameEl.append(concertTitleEl);
 
-    concertResultsEl.append(concertName);
+    concertUl.append(concertName);
+    concertResultsEl.append(concertLinkEl);
   }
 }
   
