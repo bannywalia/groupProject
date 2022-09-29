@@ -10,6 +10,7 @@ searchEl.addEventListener("click", function () {
   searchHistory.push(searchTerm);
   localStorage.setItem("search", JSON.stringify(searchHistory));
   renderSearchHistory();
+  console.log(searchHistory)
 })
 
 clearEl.addEventListener("click", function () {

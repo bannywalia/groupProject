@@ -123,15 +123,25 @@ let displayConcerts = function (events, searchTerm) {
   for (let i = 0; i < events.length; i++) {
     let concertName = events[i].name;
 
-    let concertNameEl = document.createElement('div')
-    concertNameEl.classList = 'list-item flex-row justify-space-between align-center';
+    let concertUl = document.createElement("ul")
+    concertResultsEl.appendChild(concertUl)
 
+
+    let concertNameEl = document.createElement('li')
+    concertNameEl.classList = 'list-item flex-row justify-space-between align-center';
+// added links to concert results
     let concertTitleEl = document.createElement('span');
     concertTitleEl.innerHTML = concertName;
 
+    let concertLinkEl = document.createElement ('a');
+    concertLinkEl.innerHTML =" Find Tickets Here";
+    concertLinkEl.href = events[i].url
+
+  
     concertNameEl.append(concertTitleEl);
 
-    concertResultsEl.append(concertName);
+    concertUl.append(concertName);
+    concertResultsEl.append(concertLinkEl);
   }
 }
   
