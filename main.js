@@ -52,10 +52,10 @@ let displayArtists = function (songs, searchTerm) {
     return;
   }
 
-  searchResultsEl.textContent = searchTerm;
+  //searchResultsEl.textContent = searchTerm;
 
   // need to fix after this
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 10; i++) {
     let artistName = songs[i].name;
     const thumbnailUrl = songs[i].thumbnail;
 
