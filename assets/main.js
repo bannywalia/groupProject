@@ -4,7 +4,7 @@ const searchResultsEl = document.querySelector('#search-results');
 const searchFormEl = document.querySelector('#search-form');
 const searchFieldEl = document.querySelector("#search-field");
 const artistImgEl = document.querySelector("#artist_img");
-const concertResultsEl = document.querySelector("#concert-results");
+const concertResultsEl = document.querySelector("#concert-results")
 
 
 let formSubmitHandler = function (event) {
@@ -177,3 +177,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+Footer
