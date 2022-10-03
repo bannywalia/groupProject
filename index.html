@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.css">
-    <link rel="stylesheet" href="./style.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/style.css">
     <title>Artistry</title>
 </head>
 
@@ -20,8 +19,8 @@
             <div class="container" id="heroContainer">
                 <div class="titleHero">
                     <h1 id="titleArtistry">Artistry</h1>
-                    <img id="artistry" src="./Artistry2020-Logo.png" alt="MIC"
-                        style="max-width: 100px; max-height: 100px;">
+                    <img id="artistry" src="./assets/Artistry2020-Logo.png" alt="MIC"
+                        style="max-width: 160px; max-height: 100px;">
                 </div>
                 <h4 id="subHead">An app for finding a new favourite artist</h4>
 
@@ -33,7 +32,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-4">
+                <div class="column is-4 is-desktop">
                     <!--Search box-->
                     <div class="notification is-primary is-size-3">
                         <form id="search-form">
@@ -43,21 +42,22 @@
                                     <input class="input" type="text" placeholder="Search an Artist" id="search-field">
                                 </div>
                                 <div class="control">
-                                    <button class="button is-info" id="search-button">Search</button>
+                                    <button class="button is-info is-rounded" id="search-button">Search</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <!--Search history-->
-                    <div class="notification has-background-grey-lighter" id="search-history">
+                    <div class="notification has-background-grey-lighter is-desktop" id="search-history">
                         <label class="label">Search History</label>
-                        <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
+                        <button class="btn btn-primary mb-3 is-rounded" type="button" id="clear-history">Clear history</button>
                         <form id="history"></form>
                         <ul id="search-history-list">
                         </ul>
                     </div>
-                    <div class="column is-12  has-background-grey-lighter">
-                        <div>Concert Results</div>
+                    <div class="column is-12 is-mobile  has-background-grey-lighter">
+                        <label class ="label">Concert Results</label>
+                        <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
                         <form id ="concert-results"></form>
                     </div>
     
@@ -70,8 +70,8 @@
             </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./main.js"></script>
-    <script src="./searchhistory.js"></script>
+    <script src="./assets/main.js"></script>
+    <script src="./assets/searchhistory.js"></script>
 </body>
 
 </html>
