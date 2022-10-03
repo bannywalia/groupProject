@@ -12,7 +12,7 @@ Artistry is a music finding app that allows you to look up your favourite/new ar
 
 
 ## The Creators:
-* **Angela**
+* **Angela Fauteux**
 * **Heela Qayumie** 
 * **Banny Walia** 
 
